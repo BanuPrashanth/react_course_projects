@@ -1,14 +1,42 @@
 "use strict";
 
-console.log("App.js is Running!!!");
+var val = true,
+    buttonName = "Show details";
 
-//JSX - JAVASCRIPT XML
+var info = function info() {
+    if (val == true && buttonName == "Show details") {
+        val = false;
+        buttonName = "Hide details";
+    } else {
+        val = true;
+        buttonName = "Show details";
+    }
+    renderFull();
+};
 
-var template = React.createElement(
-  "h1",
-  null,
-  "This is a JSX Template! Are the Changes Seen? Yes it's seen.."
-);
-var appRoot = document.getElementById('app');
+var renderFull = function renderFull() {
+    var template = React.createElement(
+        "div",
+        null,
+        React.createElement(
+            "h1",
+            null,
+            "VISIBILITY TOGGLE!"
+        ),
+        React.createElement(
+            "button",
+            { onClick: info },
+            buttonName
+        ),
+        React.createElement(
+            "p",
+            { hidden: val },
+            "Details Which will be Hidden or Shown Depending upon user"
+        )
+    );
+    ReactDOM.render(template, root);
+};
 
-ReactDOM.render(template, appRoot);
+var root = document.getElementById('app');
+
+renderFull();
