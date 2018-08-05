@@ -1,29 +1,51 @@
-let val = true,
-    buttonName = "Show details";
-
-const info = () => {
-    if(val == true && buttonName== "Show details"){
-        val = false;
-        buttonName = "Hide details";
-    }else {
-        val = true;
-        buttonName= "Show details";
+class VisibilityToggle extends React.Component {
+    constructor(props){
+        super(props);
+        this.info = this.info.bind(this);
+        this.state = {
+            visibility: false
+        }
     }
-   renderFull();
+    info(){
+        this.setState((prevState) =>{
+            return {
+                visibility: !prevState.visibility
+            };
+        });
+    }
+    render(){
+        return (
+            <div>
+                <h1>VISIBILITY TOGGLE!</h1>
+                <button onClick={this.info}>{this.state.visibility? 'Show details' : 'Hide details' }</button>
+                {this.state.visibility && <p>Details Which will be Hidden or Shown Depending upon user</p>}
+            </div>
+        );
+    }
 }
 
-const renderFull = () => {
-    const template = (
-        <div>
-            <h1>VISIBILITY TOGGLE!</h1>
-            <button onClick={info}>{buttonName}</button>
-            <p hidden={val}>Details Which will be Hidden or Shown Depending upon user</p>
-        </div>
-    );
-    ReactDOM.render(template, root);
-}
+ReactDOM.render(<VisibilityToggle />, document.getElementById('app'));
 
-const root = document.getElementById('app');
+// let visibility = true;
 
-renderFull();
+// const info = () => {
+//     visibility = !visibility;
+//     renderFull();
+// };
+
+// const renderFull = () => {
+//     const template = (
+//         <div>
+//             <h1>VISIBILITY TOGGLE!!</h1>
+//             <button onClick={info}>{visibility ? 'Hide details' : 'Show details'}</button>
+//             {visibility && <p>Details Which will be Hidden or Shown Depending upon user</p>}
+//         </div>
+//     );
+//     ReactDOM.render(template, root);
+// }
+
+// const root = document.getElementById('app');
+
+// renderFull();
+
 
