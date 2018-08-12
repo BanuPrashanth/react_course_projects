@@ -1,2 +1,4 @@
 #ignore the Node modules file
 indecision-app/node_modules
+boilerplate -v1/node_modules
+expensify/node_modules
