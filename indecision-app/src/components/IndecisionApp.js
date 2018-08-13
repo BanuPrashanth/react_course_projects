@@ -35,8 +35,8 @@ export default class IndecisionApp extends React.Component {
         this.setState((prevState) => ({options: prevState.options.filter(option => optionToBeRemoved !== option)}))
     };
     handlePick = () => {
+        let randomNumber = Math.floor(Math.random() * prevState.options.length);
         this.setState((prevState) => {
-            let randomNumber = Math.floor(Math.random() * prevState.options.length);
             this.setState((prevState) => ({
                  selectedOpion: prevState.options[randomNumber]
             }));
