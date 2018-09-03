@@ -9,13 +9,11 @@ import getVisibleText from './selectors/expenses';
 
 const store = configureStore();
 
-//addexpense waterbill, gasbill
-//setTextFilter bill
-//getVisible expense
-
-store.dispatch(addExpense({description: 'Water Bill', note: 'August Months water bill', amount: 2300, createdAt: 10000}))
-store.dispatch(addExpense({description: 'Gas Bill', amount: 9000}));
-store.dispatch(addExpense({description: 'Udemy Course', amount: 640, createdAt: 46562656264}))
+if(process.env.NODE_ENV !== 'production'){
+    console.log('development')
+}else{
+    console.log('Production')
+}
 
 const jsx = (
     <Provider store={store}>
